@@ -5,6 +5,9 @@
  */
 package SoloLexico;
 
+import static SoloLexico.Tokens.ELSE;
+import static SoloLexico.Tokens.IF;
+import static SoloLexico.Tokens.PRAGMA;
 import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.File;
@@ -145,7 +148,6 @@ public class FrmAnalizador extends javax.swing.JFrame {
                 case Cadena:
                     resultado += "  <Tipo de dato>\t" + lexicos.lexemas + "\n";
                     break;
-
                 case Int:
                     resultado += "  <Reservada int>\t" + lexicos.lexemas + "\n";
                     break;
@@ -188,6 +190,12 @@ public class FrmAnalizador extends javax.swing.JFrame {
                 case P_coma:
                     resultado += "  <Punto y coma>\t" + lexicos.lexemas + "\n";
                     break;
+                case IF:
+                    resultado += "  <IF>\t\t"+ lexicos.lexemas + "\n";
+                    break;
+                case ELSE:
+                    resultado += "  <ELSE>\t\t"+ lexicos.lexemas + "\n";
+                    break;    
                 case Identificador:
                     resultado += "  <Identificador>\t\t" + lexicos.lexemas + "\n";
                     break;
@@ -197,6 +205,168 @@ public class FrmAnalizador extends javax.swing.JFrame {
                 case ERROR:
                     resultado += "  <Simbolo no definido>\n";
                     break;
+                case Char:
+                    resultado += "  <Tipo de dato Char>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Float:
+                    resultado += "  <Tipo de dato Float>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Long:
+                    resultado += "  <Tipo de dato Long>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Short:
+                    resultado += "  <Tipo de dato Short>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Unsigned:
+                    resultado += "  <Tipo de dato Unsigned>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Signed:
+                    resultado += "  <Tipo de dato Signed>\t" + lexicos.lexemas + "\n";
+                    break;
+                case WHILE:
+                    resultado += "  <WHILE>\t\t"+ lexicos.lexemas + "\n";
+                    break;
+                case FOR:
+                    resultado += "  <FOR>\t\t"+ lexicos.lexemas + "\n";
+                    break;
+                case DO:
+                    resultado += "  <DO>\t\t"+ lexicos.lexemas + "\n";
+                    break;
+                case SWITCH:
+                    resultado += "  <SWITCH>\t\t"+ lexicos.lexemas + "\n";
+                    break;
+                case CASE:
+                    resultado += "  <CASE>\t\t"+ lexicos.lexemas + "\n";
+                    break;
+                case DEFAULT:
+                    resultado += "  <DEFAULT>\t\t"+ lexicos.lexemas + "\n";
+                    break;
+                case BREAK:
+                    resultado += "  <BREAK>\t\t"+ lexicos.lexemas + "\n";
+                    break;
+                case CONTINUE:
+                    resultado += "  <CONTINUE>\t\t"+ lexicos.lexemas + "\n";
+                    break;
+                case RETURN:
+                    resultado += "  <RETURN>\t\t"+ lexicos.lexemas + "\n";
+                    break;
+                case CONST:
+                    resultado += "  <CONST>\t\t"+ lexicos.lexemas + "\n";
+                    break;
+                case VOLATILE:
+                    resultado += "  <VOLATILE>\t\t"+ lexicos.lexemas + "\n";
+                    break;
+                case STATIC:
+                    resultado += "  <STATIC>\t\t"+ lexicos.lexemas + "\n";
+                    break;
+                case EXTERN:
+                    resultado += "  <EXTERN>\t\t"+ lexicos.lexemas + "\n";
+                    break;
+                case REGISTER:
+                    resultado += "  <REGISTER>\t\t"+ lexicos.lexemas + "\n";
+                    break;
+                case TYPEDEF:
+                    resultado += "  <TYPEDEF>\t\t" + lexicos.lexemas + "\n";
+                    break;
+                case ASSIGN_ADD:
+                    resultado += "  <Operador de asignación +=>\t" + lexicos.lexemas + "\n";
+                    break;
+                case ASSIGN_SUB:
+                    resultado += "  <Operador de asignación -=>\t" + lexicos.lexemas + "\n";
+                    break;
+                case ASSIGN_MUL:
+                    resultado += "  <Operador de asignación *=>\t" + lexicos.lexemas + "\n";
+                    break;
+                case ASSIGN_DIV:
+                    resultado += "  <Operador de asignación /=>\t" + lexicos.lexemas + "\n";
+                    break;
+                case ASSIGN_MOD:
+                    resultado += "  <Operador de asignación %=>\t" + lexicos.lexemas + "\n";
+                    break;
+                case ASSIGN_AND:
+                    resultado += "  <Operador de asignación &=>\t" + lexicos.lexemas + "\n";
+                    break;
+                case ASSIGN_OR:
+                    resultado += "  <Operador de asignación |=>\t" + lexicos.lexemas + "\n";
+                    break;
+                case ASSIGN_XOR:
+                    resultado += "  <Operador de asignación ^=>\t" + lexicos.lexemas + "\n";
+                    break;
+                case ASSIGN_LEFT:
+                    resultado += "  <Operador de asignación <<=>\t" + lexicos.lexemas + "\n";
+                    break;
+                case ASSIGN_RIGHT:
+                    resultado += "  <Operador de asignación >>=>\t" + lexicos.lexemas + "\n";
+                    break;
+                case INCREMENT:
+                    resultado += "  <Operador de incremento ++>\t" + lexicos.lexemas + "\n";
+                    break;
+                case DECREMENT:
+                    resultado += "  <Operador de decremento -->\t" + lexicos.lexemas + "\n";
+                    break;
+                case QUESTION_MARK:
+                    resultado += "  <Operador ternario ?>\t" + lexicos.lexemas + "\n";
+                    break;
+                case COLON:
+                    resultado += "  <Operador ternario :>\t" + lexicos.lexemas + "\n";
+                    break;
+                case BITWISE_AND:
+                    resultado += "  <Operador de bits &>\t" + lexicos.lexemas + "\n";
+                    break;
+                case BITWISE_OR:
+                    resultado += "  <Operador de bits |>\t" + lexicos.lexemas + "\n";
+                    break;
+                case BITWISE_XOR:
+                    resultado += "  <Operador de bits ^>\t" + lexicos.lexemas + "\n";
+                    break;
+                case BITWISE_NOT:
+                    resultado += "  <Operador de bits ~>\t" + lexicos.lexemas + "\n";
+                    break;
+                case SHIFT_LEFT:
+                    resultado += "  <Operador de desplazamiento <<>\t" + lexicos.lexemas + "\n";
+                    break;
+                case SHIFT_RIGHT:
+                    resultado += "  <Operador de desplazamiento >>>\t" + lexicos.lexemas + "\n";
+                    break;
+                case AMPERSAND:
+                    resultado += "  <Operador &>\t\t" + lexicos.lexemas + "\n";
+                    break;
+                case PIPE:
+                    resultado += "  <Operador |>\t\t" + lexicos.lexemas + "\n";
+                    break;
+                case TILDE:
+                    resultado += "  <Operador ~>\t\t" + lexicos.lexemas + "\n";
+                    break;
+                case ARROW:
+                    resultado += "  <Operador ->>\t\t" + lexicos.lexemas + "\n";
+                    break;
+                case TRUE:
+                    resultado += "  <Valor booleano true>\t" + lexicos.lexemas + "\n";
+                    break;
+                case FALSE:
+                    resultado += "  <Valor booleano false>\t" + lexicos.lexemas + "\n";
+                    break;
+                case DEFINE:
+                    resultado += "  <Directiva de preprocesador>\t" + lexicos.lexemas + "\n";
+                    break;
+                case INCLUDE:
+                    resultado += "  <Directiva de preprocesador>\t" + lexicos.lexemas + "\n";
+                    break;
+                case IFDEF:
+                    resultado += "  <Directiva de preprocesador>\t" + lexicos.lexemas + "\n";
+                    break;
+                case IFNDEF:
+                    resultado += "  <Directiva de preprocesador>\t" + lexicos.lexemas + "\n";
+                    break;
+                case ENDIF:
+                    resultado += "  <Directiva de preprocesador>\t" + lexicos.lexemas + "\n";
+                    break;
+                case PRAGMA:
+                    resultado += "  <Directiva de preprocesador>\t" + lexicos.lexemas + "\n";
+                    break;
+                case Porcentaje:
+                    resultado += "  <Porcentaje>\t\t" + lexicos.lexemas + "\n";
+                    break;    
                 default:
                     resultado += "  < " + lexicos.lexemas + " >\n";
                     break;
