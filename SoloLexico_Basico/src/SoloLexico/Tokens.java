@@ -1,5 +1,8 @@
 package SoloLexico;
 
+//María Fernanda Pérez Hernandez - 20211020002
+//Juan Esteban Carrillo Garcia - 20212020147
+
 public enum Tokens {
     // Tipos de datos
     Int,

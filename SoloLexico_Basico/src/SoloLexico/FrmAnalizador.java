@@ -3,6 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+//María Fernanda Pérez Hernandez - 20211020002
+//Juan Esteban Carrillo Garcia - 20212020147
+
 package SoloLexico;
 
 import static SoloLexico.Tokens.ELSE;

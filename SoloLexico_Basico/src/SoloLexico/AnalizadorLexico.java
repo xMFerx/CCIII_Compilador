@@ -8,7 +8,9 @@ import java.nio.file.Paths;
 
 /**
  *
- * @author mdelgado
+ * @author
+ * //María Fernanda Pérez Hernandez - 20211020002
+   //Juan Esteban Carrillo Garcia - 20212020147
  */
 public class AnalizadorLexico {
     public static void main(String[] args) throws Exception {
