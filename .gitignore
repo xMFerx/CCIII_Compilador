@@ -1,0 +1,10 @@
+src/Analizador/Lexico.java
+src/Analizador/Lexico.java~
+src/Analizador/LexicoCup.java
+src/Analizador/LexicoCup.java~
+src/Analizador/Sintaxis.java
+src/Analizador/sym.java
+build/built-jar.properties
+nbproject/private/private.properties
+nbproject/private/private.xml
+*.class
