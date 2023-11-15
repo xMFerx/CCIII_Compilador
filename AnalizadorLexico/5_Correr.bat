@@ -1,0 +1,2 @@
+Programa.exe go
+pause
