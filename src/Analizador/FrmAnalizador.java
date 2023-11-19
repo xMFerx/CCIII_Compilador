@@ -471,35 +471,45 @@ public class FrmAnalizador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnALexicoActionPerformed
 
     private void btnArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArchivoActionPerformed
-        JFileChooser escoger = new JFileChooser(System.getProperty("user.dir"));
-        escoger.showOpenDialog(null);
-        
-        try {
-            File arc = new File(escoger.getSelectedFile().getAbsolutePath());
-            String ST = new String(Files.readAllBytes(arc.toPath()));
-            Resultado.setText(ST);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(FrmAnalizador.class.getName()).log(Level.SEVERE, null, ex);
-        } catch(NullPointerException ex){
-            System.out.println("Archivo no seleccionado");
-        } catch (IOException ex) {
-            Logger.getLogger(FrmAnalizador.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    JFileChooser escoger = new JFileChooser(System.getProperty("user.dir"));
+    // Se muestra el diálogo de selección de archivo
+    escoger.showOpenDialog(null);
+    
+    try {
+        // Se obtiene la ruta absoluta del archivo seleccionado y se crea un objeto File
+        File arc = new File(escoger.getSelectedFile().getAbsolutePath());
+        // Se lee el contenido del archivo en forma de bytes y se convierte a una cadena
+        String ST = new String(Files.readAllBytes(arc.toPath()));
+        // Se establece el contenido de la cadena en algún componente de interfaz de usuario llamado "Resultado"
+        Resultado.setText(ST);
+    } catch (FileNotFoundException ex) {
+        // Manejo de la excepción si el archivo no se encuentra
+        Logger.getLogger(FrmAnalizador.class.getName()).log(Level.SEVERE, null, ex);
+    } catch(NullPointerException ex){
+        // Manejo de la excepción si no se selecciona ningún archivo
+        System.out.println("Archivo no seleccionado");
+    } catch (IOException ex) {
+        // Manejo de otras excepciones de lectura de archivos
+        Logger.getLogger(FrmAnalizador.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }//GEN-LAST:event_btnArchivoActionPerformed
 
     private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        //Método para boorar el cuadro de texto
         txtAnalizarLex.setText(null);
     }//GEN-LAST:event_btnBorrarActionPerformed
 
     private void btnASintacticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnASintacticoActionPerformed
         String ST = Resultado.getText();
         Sintaxis s = new Sintaxis(new Analizador.LexicoCup(new StringReader(ST)));
-
+        //Método que lee el cuadro de texto "resultado e invoca el analizador sintactico
         try {
             s.parse();
+            //Si el analizado sintactico se ejecuta orrectamente coloca el siguiente texto
             txtAnalizarSin.setText("Analisis realizado correctamente");
             txtAnalizarSin.setForeground(new Color(25, 111, 61));
         } catch (Exception ex) {
+            //Si el analizado sintactico fallta se coloca el siguiente texto
             Symbol sym = s.getS();
             txtAnalizarSin.setText("Error de sintaxis. Linea: " + (sym.right + 1) + " Columna: " + (sym.left + 1) + ", Texto: \"" + sym.value + "\"");
             txtAnalizarSin.setForeground(Color.red);
@@ -518,6 +528,7 @@ public class FrmAnalizador extends javax.swing.JFrame {
         //Escribir Archivo
         FileWriter fw = null;
         
+        //Método para crear el archivo del programa en un .cpp
         try
         {
             Path archivo = Paths.get("Programa.cpp");
@@ -554,38 +565,25 @@ public class FrmAnalizador extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(FrmAnalizador.class.getName()).log(Level.SEVERE, null, ex);
         }      
-        /*
-        try {
-            String[] intermedio = {"1_Intermedio.bat"};
-            Runtime.getRuntime().exec(intermedio);
-            String[] gassembler = {"2_Ensamblador.bat"};
-            Runtime.getRuntime().exec(gassembler);
-            System.out.println("Ejecucion del convertidor de cpp a assembler");
-        } catch (IOException ex) {
-             System.out.println(ex);
-        }
-        */
     }//GEN-LAST:event_btnGenIntermedioActionPerformed
 
     private void btnEjecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEjecutarActionPerformed
-       
         try {
-            
-            String[] array = { "cmd", "/C", "start", 
-            "5_Correr.bat" };
+            // Se crea un array de strings con los elementos necesarios para ejecutar un archivo por lotes en el sistema Windows
+            String[] array = { "cmd", "/C", "start", "5_Correr.bat" };
+
+            // Se utiliza Runtime.getRuntime().exec() para ejecutar el comando especificado en el array
             Runtime.getRuntime().exec(array);
-            
+
         } catch (IOException ex) {
+            // En caso de que ocurra una excepción de E/S durante la ejecución, se registra el error
             Logger.getLogger(FrmAnalizador.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-
     }//GEN-LAST:event_btnEjecutarActionPerformed
 
     private void btnGenEnsambladorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenEnsambladorActionPerformed
-
+        //Método que implementa la métodologia para crear archivos del método anterior
         try {
-            
             String[] array = { "cmd", "/C", "start", 
             "2_Ensamblador.bat" };
             Runtime.getRuntime().exec(array);
@@ -593,24 +591,11 @@ public class FrmAnalizador extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(FrmAnalizador.class.getName()).log(Level.SEVERE, null, ex);
         }  
-        
-        /*
-        try {
-            String[] gobjeto = {"3_Objeto.bat"};
-            Runtime.getRuntime().exec(gobjeto);
-            String[] gejecutable = {"4_Ejecutable.bat"};
-            Runtime.getRuntime().exec(gejecutable);
-            System.out.println("Ejecucion del convertidor de cpp a assembler");
-        } catch (IOException ex) {
-            System.out.println(ex);
-        }
-        */
     }//GEN-LAST:event_btnGenEnsambladorActionPerformed
 
     private void btnGenObjetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenObjetoActionPerformed
-      
-        try {
-            
+       //Método que implementa la métodologia para crear archivos del método anterior
+        try { 
             String[] array = { "cmd", "/C", "start", 
             "3_Objeto.bat" };
             Runtime.getRuntime().exec(array);
@@ -622,9 +607,8 @@ public class FrmAnalizador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGenObjetoActionPerformed
 
     private void btnGenEjecutableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenEjecutableActionPerformed
-      
+       //Método que implementa la métodologia para crear archivos del método anterior
         try {
-            
             String[] array = { "cmd", "/C", "start", 
             "4_Ejecutable.bat" };
             Runtime.getRuntime().exec(array);
